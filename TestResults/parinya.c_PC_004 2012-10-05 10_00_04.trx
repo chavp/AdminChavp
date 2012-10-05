@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="75fa9349-97a9-4f4d-8039-1288e163eaeb" name="parinya.c@PC_004 2012-10-05 10:00:04" runUser="CARPASSAD\parinya.c" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="ef382cb5-c94e-4630-beb4-c28e26d8ecd3">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="parinya.c_PC_004 2012-10-05 10_00_04">
+      <DeploymentItem filename="D:\GithubRepositories\AdminChavp\AdminChavp.Test\lib\Newtonsoft.Json.dll" />
+      <DeploymentItem filename="D:\GithubRepositories\AdminChavp\AdminChavp.Test\lib\MongoDB.Bson.dll" />
+      <DeploymentItem filename="D:\GithubRepositories\AdminChavp\AdminChavp.Test\lib\MongoDB.Driver.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-10-05T10:00:04.8166689+07:00" queuing="2012-10-05T10:00:04.8947004+07:00" start="2012-10-05T10:00:04.8947004+07:00" finish="2012-10-05T10:00:06.1275981+07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetDetailOfMethod" storage="d:\githubrepositories\adminchavp\adminchavp.test\bin\debug\adminchavp.test.dll" id="ac4dd233-1222-c5c0-194c-46d8d7f0a600">
+      <Execution id="89c0167d-0025-4ac1-84c8-2f723e98609d" />
+      <TestMethod codeBase="D:/GithubRepositories/AdminChavp/AdminChavp.Test/bin/Debug/AdminChavp.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="AdminChavp.Test.UnitTest1, AdminChavp.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetDetailOfMethod" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ac4dd233-1222-c5c0-194c-46d8d7f0a600" executionId="89c0167d-0025-4ac1-84c8-2f723e98609d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="89c0167d-0025-4ac1-84c8-2f723e98609d" testId="ac4dd233-1222-c5c0-194c-46d8d7f0a600" testName="GetDetailOfMethod" computerName="PC_004" duration="00:00:01.0256998" startTime="2012-10-05T10:00:04.8947004+07:00" endTime="2012-10-05T10:00:06.1275981+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="89c0167d-0025-4ac1-84c8-2f723e98609d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method AdminChavp.Test.UnitTest1.GetDetailOfMethod threw exception: 
+System.OverflowException: Value was either too large or too small for an Int32.</Message>
+          <StackTrace>    at System.Convert.ToInt32(Double value)
+   at AdminChavp.Test.UnitTest1.GetDetailOfMethod() in D:\GithubRepositories\AdminChavp\AdminChavp.Test\UnitTest1.cs:line 125
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
