@@ -7,7 +7,7 @@
 
 @foreach (var machine in Model)
 {
-    <div data-role="collapsible" data-theme="b" data-content-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+    <div data-role="collapsible" data-theme="b" data-content-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-collapsed="false">
         <h2>@machine.Name</h2>
         <ul data-role="listview" data-filter="true" data-inset="true">
         @foreach (var service in machine.Services)

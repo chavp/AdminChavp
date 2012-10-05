@@ -72,7 +72,7 @@ namespace AdminChavpWeb.Controllers
                     string method = id["method"].AsString;
                     string machineName = id["machineName"].AsString;
 
-                    int totalCal = Convert.ToInt32(value["count"].AsDouble);
+                    int totalCal = Convert.ToInt32(value["count"]);
 
                     if (!dicOfIList.ContainsKey(machineName))
                     {
@@ -102,16 +102,97 @@ namespace AdminChavpWeb.Controllers
                 }
             }
 
-            return View(dicOfIList.Values.ToList());
+            var v = dicOfIList.Values.OrderBy(item => item.Name).ToList();
+            return View(v);
         }
 
         public ActionResult MethodInfo(string machineName, string serviceName, string methodName)
         {
+            IList<MethodDetailModel> methodDetailModelList = new List<MethodDetailModel>();
             ViewBag.MachineName = machineName;
             ViewBag.ServiceName = serviceName;
             ViewBag.MethodName = methodName;
 
-            return View();
+            MongoServer server = MongoServer.Create("mongodb://appsit01");
+            var database = server.GetDatabase("logs");
+            using (server.RequestStart(database))
+            {
+                var servicePerformances = database.GetCollection("service_performance");
+
+                var map = @"
+                function() { 
+                    var me = this;                                                                 
+                    var key = {};
+                    key.day = me.createdDate.getDay();
+                    key.month = me.createdDate.getMonth();
+                    key.year = me.createdDate.getFullYear();
+
+                    if(me.machineName === ':machineName'){
+                        if(me.class === ':serviceName'){
+                            if(me.method === ':methodName'){
+                                emit(key, { count: 1, totalElapsedMilliseconds: me.elapsedMilliseconds });
+                            }
+                        }
+                    }                                                            
+                }";
+                map = map.Replace(":machineName", machineName);
+                map = map.Replace(":serviceName", serviceName);
+                map = map.Replace(":methodName", methodName);
+
+                var reduce = @"
+                function(key, values) {
+                    var result = { count: 0, totalElapsedMilliseconds: 0 };
+                    values.forEach(function(value){               
+                        result.count += value.count;
+                        result.totalElapsedMilliseconds += value.totalElapsedMilliseconds;
+                    });
+                    return result;
+                }";
+
+                var finalize = @"
+                function(key, value){
+                      value.averageElapsedMilliseconds = value.totalElapsedMilliseconds / value.count;
+                      return value;
+                }";
+
+                var options = new MapReduceOptionsBuilder();
+                options.SetFinalize(finalize);
+                options.SetOutput(MapReduceOutput.Inline);
+
+                var results = servicePerformances.MapReduce(map, reduce, options);
+                foreach (var result in results.GetResults())
+                {
+                    var doc = result.ToBsonDocument();
+                    var id = doc["_id"].AsBsonDocument;
+                    var value = doc["value"].AsBsonDocument;
+                    var count = Convert.ToInt32(value["count"]);
+                    var averageElapsedMilliseconds = Convert.ToDouble(value["averageElapsedMilliseconds"]);
+                    var totalElapsedMilliseconds = Convert.ToInt32(value["totalElapsedMilliseconds"]);
+
+                    var day = Convert.ToInt32(id["day"]);
+                    var month = Convert.ToInt32(id["month"]);
+                    var year = Convert.ToInt32(id["year"]);
+
+                    string toDay = string.Format("{0}/{1}/{2}", month, day, year);
+
+                    MethodDetailModel methodDetailModel = new MethodDetailModel
+                    {
+                        Date = new DateTime(year, month, day),
+                        MachineName = machineName,
+                        ServiceName = serviceName,
+                        MethodName = methodName,
+                        TotalUsage = count,
+                        TotalElapsedMilliseconds = totalElapsedMilliseconds,
+                        AverageElapsedMilliseconds = averageElapsedMilliseconds,
+                    };
+
+                    methodDetailModelList.Add(methodDetailModel);
+
+                }
+            }
+
+            methodDetailModelList = methodDetailModelList.OrderByDescending(m => m.Date).ToList();
+            return View(methodDetailModelList);
         }
     }
 }

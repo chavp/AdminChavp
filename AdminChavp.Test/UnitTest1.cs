@@ -94,7 +94,7 @@ namespace AdminChavp.Test
 
                     if(me.machineName === 'APPSIT01'){
                         if(me.class === 'DeviceService'){
-                            if(me.method === 'GetDeployingGeoFenceConf'){
+                            if(me.method === 'GetDeployedGeoFenceConf'){
                                 emit(key, { count: 1, totalElapsedMilliseconds: me.elapsedMilliseconds });
                             }
                         }
@@ -102,7 +102,7 @@ namespace AdminChavp.Test
                 }");
                 var reduce = new BsonJavaScript(@"
                 function(key, values) {
-                    var result = { count: 0, totalElapsedMilliseconds: 0 };
+                    var result = { count: 0, totalElapsedMilliseconds: 0.0 };
                     values.forEach(function(value){               
                         result.count += value.count;
                         result.totalElapsedMilliseconds += value.totalElapsedMilliseconds;
@@ -126,13 +126,13 @@ namespace AdminChavp.Test
                     var doc = result.ToBsonDocument();
                     var id = doc["_id"].AsBsonDocument;
                     var value = doc["value"].AsBsonDocument;
-                    var count = Convert.ToInt32(value["count"].AsDouble);
-                    var averageElapsedMilliseconds = Convert.ToInt32(value["averageElapsedMilliseconds"].AsDouble);
-                    var totalElapsedMilliseconds = Convert.ToInt32(value["totalElapsedMilliseconds"].AsDouble);
+                    var count = Convert.ToInt32(value["count"]);
+                    var averageElapsedMilliseconds = Convert.ToDouble(value["averageElapsedMilliseconds"]);
+                    var totalElapsedMilliseconds = Convert.ToInt32(value["totalElapsedMilliseconds"]);
 
-                    var day = id["day"].AsDouble;
-                    var month = id["month"].AsDouble;
-                    var year = id["year"].AsDouble;
+                    var day = Convert.ToInt32(id["day"]);
+                    var month = Convert.ToInt32(id["month"]);
+                    var year = Convert.ToInt32(id["year"]);
 
                     string toDay = string.Format("{0}/{1}/{2}", day, month, year);
                     Console.WriteLine(
@@ -143,7 +143,7 @@ namespace AdminChavp.Test
                 var query = Query.And(
                         Query.EQ("machineName", "APPSIT01"),
                         Query.EQ("class", "DeviceService"),
-                        Query.EQ("method", "GetDeployingGeoFenceConf")
+                        Query.EQ("method", "GetDeviceByImei")
                     );
 
                 var all = servicePerformances.Find(query).AsEnumerable();

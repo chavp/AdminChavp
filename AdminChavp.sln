@@ -12,6 +12,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "demos", "..\..\jQueryMobile\jquery.mobile-1.2.0\demos\", "{2CC11409-90BE-4232-937F-8266E40852BA}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/demos"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\jQueryMobile\jquery.mobile-1.2.0\demos\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\demos\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/demos"
+		Release.AspNetCompiler.PhysicalPath = "..\..\jQueryMobile\jquery.mobile-1.2.0\demos\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\demos\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "6005"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = AdminChavp.vsmdi
@@ -29,6 +49,10 @@ Global
 		{9DEF146B-3D8F-4531-A70C-DEE9C522B0C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DEF146B-3D8F-4531-A70C-DEE9C522B0C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DEF146B-3D8F-4531-A70C-DEE9C522B0C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC11409-90BE-4232-937F-8266E40852BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC11409-90BE-4232-937F-8266E40852BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC11409-90BE-4232-937F-8266E40852BA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC11409-90BE-4232-937F-8266E40852BA}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

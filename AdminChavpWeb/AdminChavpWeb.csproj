@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\MachineModel.cs" />
+    <Compile Include="Models\MethodDetailModel.cs" />
     <Compile Include="Models\MethodModel.cs" />
     <Compile Include="Models\SeviceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
