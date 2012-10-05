@@ -126,10 +126,8 @@
     <Content Include="Content\Images\icons-18-white.png" />
     <Content Include="Content\Images\icons-36-black.png" />
     <Content Include="Content\Images\icons-36-white.png" />
-    <Content Include="Content\jquery.mobile-1.0.css" />
-    <Content Include="Content\jquery.mobile-1.0.min.css" />
-    <Content Include="Content\jquery.mobile.structure-1.0.css" />
-    <Content Include="Content\jquery.mobile.structure-1.0.min.css" />
+    <Content Include="Content\jquery.mobile-1.2.0.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.2.0.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -166,8 +164,6 @@
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
-    <Content Include="Scripts\jquery.mobile-1.0.js" />
-    <Content Include="Scripts\jquery.mobile-1.0.min.js" />
     <Content Include="Scripts\jquery.mobile-1.2.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

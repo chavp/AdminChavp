@@ -1,0 +1,17 @@
+﻿@model IList<AdminChavpWeb.Models.MethodDetailModel>
+
+@{
+    ViewBag.Title = "Method Performance";
+}
+
+<ul data-role="listview" data-inset="true" id="myList">
+    <li data-role="list-divider">: @ViewBag.MachineName . @ViewBag.ServiceName . @ViewBag.MethodName</li>
+    @foreach (var methodDetail in Model)
+    {
+        <li>@methodDetail.Date.ToString("MM/dd/yyyy") <p>: @methodDetail.AverageElapsedMilliseconds.ToString("#.0#") ms/times </p><span class="ui-li-count">@methodDetail.TotalUsage</span></li>
+    }
+</ul>
+
+<div data-role="footer" class="ui-bar">
+	<a href='@Url.Action("Services")' data-role="button" data-icon="arrow-l">Services</a>
+</div>
