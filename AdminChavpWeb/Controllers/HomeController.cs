@@ -123,7 +123,7 @@ namespace AdminChavpWeb.Controllers
                 function() { 
                     var me = this;                                                                 
                     var key = {};
-                    key.day = me.createdDate.getDay();
+                    key.day = me.createdDate.getDate();
                     key.month = me.createdDate.getMonth();
                     key.year = me.createdDate.getFullYear();
 
