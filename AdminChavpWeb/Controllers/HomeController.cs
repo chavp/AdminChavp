@@ -194,5 +194,10 @@ namespace AdminChavpWeb.Controllers
             methodDetailModelList = methodDetailModelList.OrderByDescending(m => m.Date).ToList();
             return View(methodDetailModelList);
         }
+
+        public ActionResult MethodDetails(string machineName, string serviceName, string methodName, string callMMddyyyy)
+        {
+            return View();
+        }
     }
 }

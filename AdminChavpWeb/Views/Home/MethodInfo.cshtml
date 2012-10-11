@@ -8,7 +8,7 @@
     <li data-role="list-divider">: @ViewBag.MachineName . @ViewBag.ServiceName . @ViewBag.MethodName</li>
     @foreach (var methodDetail in Model)
     {
-        <li>@methodDetail.Date.ToString("MM/dd/yyyy") <p>: @methodDetail.AverageElapsedMilliseconds.ToString("#.0#") ms/times </p><span class="ui-li-count">@methodDetail.TotalUsage</span></li>
+        <li><a href='@Url.Action("MethodDetails", new { machineName = ViewBag.MachineName, serviceName = ViewBag.ServiceName, methodName = ViewBag.MethodName, callMMddyyyy = methodDetail.Date.ToString("MM.dd.yyyy") })')'>@methodDetail.Date.ToString("MM/dd/yyyy") <p>: @methodDetail.AverageElapsedMilliseconds.ToString("#.0#") ms/times </p><span class="ui-li-count">@methodDetail.TotalUsage</span></a></li>
     }
 </ul>
 
